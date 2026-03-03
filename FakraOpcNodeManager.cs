@@ -1,7 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
 using Opc.Ua;
 using Opc.Ua.Server;
-using System;
 using System.Reflection;
 
 namespace WebApiOpcServer
@@ -9,8 +7,10 @@ namespace WebApiOpcServer
     public class FakraOpcNodeManager : CustomNodeManager2
     {
         private FakraOpcServerConfiguration m_configuration;
-        public FakraOpcNodeManager(IServerInternal server, ApplicationConfiguration configuration ,params string[] namespaceUris)
-            :base(server, configuration, namespaceUris)
+        private Quickstarts.FakraOpc.MachineState m_machine;
+
+        public FakraOpcNodeManager(IServerInternal server, ApplicationConfiguration configuration, params string[] namespaceUris)
+            : base(server, configuration, namespaceUris)
         {
             SystemContext.NodeIdFactory = this;
 
@@ -18,10 +18,8 @@ namespace WebApiOpcServer
             namespaceUrls[0] = Quickstarts.FakraOpc.Namespaces.FakraOpc;
             SetNamespaces(namespaceUrls);
 
-            // get the configuration for the node manager.
             m_configuration = configuration.ParseExtension<FakraOpcServerConfiguration>();
 
-            // use suitable defaults if no configuration exists.
             if (m_configuration == null)
             {
                 m_configuration = new FakraOpcServerConfiguration();
@@ -34,6 +32,7 @@ namespace WebApiOpcServer
             {
             }
         }
+
         public override NodeId New(ISystemContext context, NodeState node)
         {
             return node.NodeId;
@@ -54,24 +53,56 @@ namespace WebApiOpcServer
             lock (Lock)
             {
                 LoadPredefinedNodes(SystemContext, externalReferences);
-                //查找根节点
+
                 NodeState root = FindNodeInAddressSpace(new NodeId(Opc.Ua.ObjectIds.ObjectsFolder));
-                var boiler1 = new Quickstarts.FakraOpc.MachineState(null);
-                //ParsedNodeId pnd1 = new ParsedNodeId() { NamespaceIndex = NamespaceIndex, RootId = "Machine" };
-                boiler1.Create(
+
+                m_machine = new Quickstarts.FakraOpc.MachineState(null);
+                m_machine.Create(
                     SystemContext,
-                    //pnd1.Construct(),
                     new NodeId("Machine", NamespaceIndex),
                     new QualifiedName("Machine", NamespaceIndex),
                     null,
                     true);
 
-                boiler1.AddReference(Opc.Ua.ReferenceTypeIds.Organizes, true, root.NodeId);
+                m_machine.AddReference(Opc.Ua.ReferenceTypeIds.Organizes, true, root.NodeId);
+                root.AddReference(Opc.Ua.ReferenceTypeIds.Organizes, false, m_machine.NodeId);
+                AddPredefinedNode(SystemContext, m_machine);
 
-                root.AddReference(Opc.Ua.ReferenceTypeIds.Organizes, false, boiler1.NodeId);
-
-                AddPredefinedNode(SystemContext, boiler1);
+                // TODO: load articles from database or configuration
+                // AddArticle(m_machine.ArticleList, 100, "Heta520-P26", "Heta520-P26", true);
+                AddArticle(m_machine.ArticleList, 200, "547-D-F-F-0.13", "547-D-F-F-0.13", true);
             }
+        }
+
+        /// <summary>
+        /// Adds an article node under the given ArticleList container.
+        /// </summary>
+        public Quickstarts.FakraOpc.ArticleState AddArticle(
+            Quickstarts.FakraOpc.ArticleListState articleList,
+            uint articleId,
+            string articleName,
+            string articleNumber,
+            bool canBeProduced)
+        {
+            var article = new Quickstarts.FakraOpc.ArticleState(null);
+
+            article.Create(
+                SystemContext,
+                new NodeId($"Article_{articleId}", NamespaceIndex),
+                new QualifiedName($"Article_{articleId}", NamespaceIndex),
+                null,
+                true);
+
+            article.ArticleId.Value = articleId;
+            article.ArticleName.Value = articleName;
+            article.ArticleNumber.Value = articleNumber;
+            article.CanBeProduced.Value = canBeProduced;
+
+            articleList.AddReference(ReferenceTypeIds.HasComponent, false, article.NodeId);
+            article.AddReference(ReferenceTypeIds.HasComponent, true, articleList.NodeId);
+
+            AddPredefinedNode(SystemContext, article);
+            return article;
         }
 
         /// <summary>
