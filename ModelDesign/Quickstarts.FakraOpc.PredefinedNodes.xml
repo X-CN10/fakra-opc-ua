@@ -3,6 +3,422 @@
   <uax:NamespaceUris>
     <uax:NamespaceUri>http://schleuniger.com/Default/</uax:NamespaceUri>
   </uax:NamespaceUris>
+  <ArticleType xmlns="http://schleuniger.com/Default/">
+    <uax:NodeClass>ObjectType_8</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=48</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>ArticleType</uax:Name>
+    </uax:BrowseName>
+    <uax:SuperTypeId>
+      <uax:Identifier>i=58</uax:Identifier>
+    </uax:SuperTypeId>
+    <ArticleId>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=49</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ArticleId</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>49</uax:NumericId>
+      <uax:DataType>
+        <uax:Identifier>i=7</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ArticleId>
+    <ArticleName>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=50</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ArticleName</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>50</uax:NumericId>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ArticleName>
+    <ArticleNumber>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=51</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ArticleNumber</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>51</uax:NumericId>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ArticleNumber>
+    <CanBeProduced>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=52</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>CanBeProduced</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>52</uax:NumericId>
+      <uax:DataType>
+        <uax:Identifier>i=1</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </CanBeProduced>
+  </ArticleType>
+  <JobInfoType xmlns="http://schleuniger.com/Default/">
+    <uax:NodeClass>ObjectType_8</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=72</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>JobInfoType</uax:Name>
+    </uax:BrowseName>
+    <uax:SuperTypeId>
+      <uax:Identifier>i=58</uax:Identifier>
+    </uax:SuperTypeId>
+    <JobId>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=73</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>JobId</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>73</uax:NumericId>
+      <uax:DataType>
+        <uax:Identifier>i=7</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </JobId>
+    <JobName>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=74</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>JobName</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>74</uax:NumericId>
+      <uax:DataType>
+        <uax:Identifier>i=12</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </JobName>
+    <JobQuantity>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=75</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>JobQuantity</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>75</uax:NumericId>
+      <uax:DataType>
+        <uax:Identifier>i=7</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </JobQuantity>
+    <GoodPartCount>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=76</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>GoodPartCount</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>76</uax:NumericId>
+      <uax:DataType>
+        <uax:Identifier>i=7</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </GoodPartCount>
+    <BadPartCount>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=77</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>BadPartCount</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>77</uax:NumericId>
+      <uax:DataType>
+        <uax:Identifier>i=7</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </BadPartCount>
+    <BatchQuantity>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=78</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>BatchQuantity</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>78</uax:NumericId>
+      <uax:DataType>
+        <uax:Identifier>i=7</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </BatchQuantity>
+    <BatchCount>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=79</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>BatchCount</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>79</uax:NumericId>
+      <uax:DataType>
+        <uax:Identifier>i=7</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </BatchCount>
+    <ArticleId>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=80</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ArticleId</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>80</uax:NumericId>
+      <uax:DataType>
+        <uax:Identifier>i=7</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ArticleId>
+    <JobState>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=81</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>JobState</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>81</uax:NumericId>
+      <uax:DataType>
+        <uax:Identifier>i=6</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </JobState>
+    <ActivationTime>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=82</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ActivationTime</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=80</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>82</uax:NumericId>
+      <uax:DataType>
+        <uax:Identifier>i=13</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ActivationTime>
+  </JobInfoType>
+  <JobListType xmlns="http://schleuniger.com/Default/">
+    <uax:NodeClass>ObjectType_8</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=64</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>JobListType</uax:Name>
+    </uax:BrowseName>
+    <uax:SuperTypeId>
+      <uax:Identifier>i=58</uax:Identifier>
+    </uax:SuperTypeId>
+  </JobListType>
+  <ArticleListType xmlns="http://schleuniger.com/Default/">
+    <uax:NodeClass>ObjectType_8</uax:NodeClass>
+    <uax:NodeId>
+      <uax:Identifier>ns=1;i=65</uax:Identifier>
+    </uax:NodeId>
+    <uax:BrowseName>
+      <uax:NamespaceIndex>1</uax:NamespaceIndex>
+      <uax:Name>ArticleListType</uax:Name>
+    </uax:BrowseName>
+    <uax:SuperTypeId>
+      <uax:Identifier>i=58</uax:Identifier>
+    </uax:SuperTypeId>
+  </ArticleListType>
   <Machine xmlns="http://schleuniger.com/Default/">
     <uax:NodeClass>ObjectType_8</uax:NodeClass>
     <uax:NodeId>
@@ -15,6 +431,98 @@
     <uax:SuperTypeId>
       <uax:Identifier>i=58</uax:Identifier>
     </uax:SuperTypeId>
+    <ProductionStatus>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=66</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ProductionStatus</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>66</uax:NumericId>
+      <uax:DataType>
+        <uax:Identifier>i=6</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ProductionStatus>
+    <ActiveJobState>
+      <uax:NodeClass>Variable_2</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=67</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ActiveJobState</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=46</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>i=68</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>67</uax:NumericId>
+      <uax:DataType>
+        <uax:Identifier>i=6</uax:Identifier>
+      </uax:DataType>
+      <uax:ValueRank>-1</uax:ValueRank>
+      <uax:AccessLevel>1</uax:AccessLevel>
+      <uax:UserAccessLevel>1</uax:UserAccessLevel>
+    </ActiveJobState>
+    <JobList>
+      <uax:NodeClass>Object_1</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=68</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>JobList</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>ns=1;i=64</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>68</uax:NumericId>
+    </JobList>
+    <ArticleList>
+      <uax:NodeClass>Object_1</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=69</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ArticleList</uax:Name>
+      </uax:BrowseName>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>ns=1;i=65</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>69</uax:NumericId>
+    </ArticleList>
     <AddJob>
       <uax:NodeClass>Method_4</uax:NodeClass>
       <uax:NodeId>
@@ -180,6 +688,79 @@
         <uax:UserAccessLevel>1</uax:UserAccessLevel>
       </OutputArguments>
     </AddJob>
+    <ActivateJob>
+      <uax:NodeClass>Method_4</uax:NodeClass>
+      <uax:NodeId>
+        <uax:Identifier>ns=1;i=70</uax:Identifier>
+      </uax:NodeId>
+      <uax:BrowseName>
+        <uax:NamespaceIndex>1</uax:NamespaceIndex>
+        <uax:Name>ActivateJob</uax:Name>
+      </uax:BrowseName>
+      <uax:Description>
+        <uax:Text>Activate a job for production.</uax:Text>
+      </uax:Description>
+      <uax:ReferenceTypeId>
+        <uax:Identifier>i=47</uax:Identifier>
+      </uax:ReferenceTypeId>
+      <uax:TypeDefinitionId>
+        <uax:Identifier>ns=1;i=70</uax:Identifier>
+      </uax:TypeDefinitionId>
+      <uax:ModellingRuleId>
+        <uax:Identifier>i=78</uax:Identifier>
+      </uax:ModellingRuleId>
+      <uax:NumericId>70</uax:NumericId>
+      <uax:Executable>true</uax:Executable>
+      <uax:UserExecutable>true</uax:UserExecutable>
+      <InputArguments xmlns="http://opcfoundation.org/UA/">
+        <uax:NodeClass>Variable_2</uax:NodeClass>
+        <uax:NodeId>
+          <uax:Identifier>ns=1;i=71</uax:Identifier>
+        </uax:NodeId>
+        <uax:BrowseName>
+          <uax:NamespaceIndex>0</uax:NamespaceIndex>
+          <uax:Name>InputArguments</uax:Name>
+        </uax:BrowseName>
+        <uax:ReferenceTypeId>
+          <uax:Identifier>i=46</uax:Identifier>
+        </uax:ReferenceTypeId>
+        <uax:TypeDefinitionId>
+          <uax:Identifier>i=68</uax:Identifier>
+        </uax:TypeDefinitionId>
+        <uax:ModellingRuleId>
+          <uax:Identifier>i=78</uax:Identifier>
+        </uax:ModellingRuleId>
+        <uax:NumericId>71</uax:NumericId>
+        <uax:Value>
+          <uax:Value>
+            <uax:ListOfExtensionObject>
+              <uax:ExtensionObject>
+                <uax:TypeId>
+                  <uax:Identifier>i=297</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                  <uax:Argument>
+                    <uax:Name>JobId</uax:Name>
+                    <uax:DataType>
+                      <uax:Identifier>i=7</uax:Identifier>
+                    </uax:DataType>
+                    <uax:ValueRank>-1</uax:ValueRank>
+                    <uax:ArrayDimensions />
+                  </uax:Argument>
+                </uax:Body>
+              </uax:ExtensionObject>
+            </uax:ListOfExtensionObject>
+          </uax:Value>
+        </uax:Value>
+        <uax:DataType>
+          <uax:Identifier>i=296</uax:Identifier>
+        </uax:DataType>
+        <uax:ValueRank>1</uax:ValueRank>
+        <uax:ArrayDimensions>0</uax:ArrayDimensions>
+        <uax:AccessLevel>1</uax:AccessLevel>
+        <uax:UserAccessLevel>1</uax:UserAccessLevel>
+      </InputArguments>
+    </ActivateJob>
     <DeleteJob>
       <uax:NodeClass>Method_4</uax:NodeClass>
       <uax:NodeId>
@@ -189,6 +770,9 @@
         <uax:NamespaceIndex>1</uax:NamespaceIndex>
         <uax:Name>DeleteJob</uax:Name>
       </uax:BrowseName>
+      <uax:Description>
+        <uax:Text>Delete a job from the machine.</uax:Text>
+      </uax:Description>
       <uax:ReferenceTypeId>
         <uax:Identifier>i=47</uax:Identifier>
       </uax:ReferenceTypeId>
@@ -260,7 +844,7 @@
         <uax:Name>GenerateReport</uax:Name>
       </uax:BrowseName>
       <uax:Description>
-        <uax:Text>Add a new job.</uax:Text>
+        <uax:Text>Generate a report file.</uax:Text>
       </uax:Description>
       <uax:ReferenceTypeId>
         <uax:Identifier>i=47</uax:Identifier>
@@ -302,9 +886,39 @@
                 </uax:TypeId>
                 <uax:Body>
                   <uax:Argument>
-                    <uax:Name>jobDescription</uax:Name>
+                    <uax:Name>JobId</uax:Name>
                     <uax:DataType>
-                      <uax:Identifier>i=12</uax:Identifier>
+                      <uax:Identifier>i=7</uax:Identifier>
+                    </uax:DataType>
+                    <uax:ValueRank>-1</uax:ValueRank>
+                    <uax:ArrayDimensions />
+                  </uax:Argument>
+                </uax:Body>
+              </uax:ExtensionObject>
+              <uax:ExtensionObject>
+                <uax:TypeId>
+                  <uax:Identifier>i=297</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                  <uax:Argument>
+                    <uax:Name>Scope</uax:Name>
+                    <uax:DataType>
+                      <uax:Identifier>i=6</uax:Identifier>
+                    </uax:DataType>
+                    <uax:ValueRank>-1</uax:ValueRank>
+                    <uax:ArrayDimensions />
+                  </uax:Argument>
+                </uax:Body>
+              </uax:ExtensionObject>
+              <uax:ExtensionObject>
+                <uax:TypeId>
+                  <uax:Identifier>i=297</uax:Identifier>
+                </uax:TypeId>
+                <uax:Body>
+                  <uax:Argument>
+                    <uax:Name>ScopeId</uax:Name>
+                    <uax:DataType>
+                      <uax:Identifier>i=7</uax:Identifier>
                     </uax:DataType>
                     <uax:ValueRank>-1</uax:ValueRank>
                     <uax:ArrayDimensions />
@@ -350,9 +964,9 @@
                 </uax:TypeId>
                 <uax:Body>
                   <uax:Argument>
-                    <uax:Name>jobId</uax:Name>
+                    <uax:Name>ReportFileNode</uax:Name>
                     <uax:DataType>
-                      <uax:Identifier>i=12</uax:Identifier>
+                      <uax:Identifier>i=17</uax:Identifier>
                     </uax:DataType>
                     <uax:ValueRank>-1</uax:ValueRank>
                     <uax:ArrayDimensions />
@@ -424,7 +1038,7 @@
       <uax:Name>WireFinishedEventType</uax:Name>
     </uax:BrowseName>
     <uax:SuperTypeId>
-      <uax:Identifier>i=2130</uax:Identifier>
+      <uax:Identifier>i=2041</uax:Identifier>
     </uax:SuperTypeId>
     <JobId>
       <uax:NodeClass>Variable_2</uax:NodeClass>
@@ -567,7 +1181,7 @@
       <uax:Name>BatchFinishedEventType</uax:Name>
     </uax:BrowseName>
     <uax:SuperTypeId>
-      <uax:Identifier>i=2130</uax:Identifier>
+      <uax:Identifier>i=2041</uax:Identifier>
     </uax:SuperTypeId>
     <BatchSequenceNumber>
       <uax:NodeClass>Variable_2</uax:NodeClass>
@@ -684,7 +1298,7 @@
       <uax:Name>JobFinishedEventType</uax:Name>
     </uax:BrowseName>
     <uax:SuperTypeId>
-      <uax:Identifier>i=2130</uax:Identifier>
+      <uax:Identifier>i=2041</uax:Identifier>
     </uax:SuperTypeId>
     <JobId>
       <uax:NodeClass>Variable_2</uax:NodeClass>
@@ -775,7 +1389,7 @@
       <uax:Name>JobStoppedEventType</uax:Name>
     </uax:BrowseName>
     <uax:SuperTypeId>
-      <uax:Identifier>i=2130</uax:Identifier>
+      <uax:Identifier>i=2041</uax:Identifier>
     </uax:SuperTypeId>
     <JobId>
       <uax:NodeClass>Variable_2</uax:NodeClass>
@@ -866,7 +1480,7 @@
       <uax:Name>ProductionStartedEventType</uax:Name>
     </uax:BrowseName>
     <uax:SuperTypeId>
-      <uax:Identifier>i=2130</uax:Identifier>
+      <uax:Identifier>i=2041</uax:Identifier>
     </uax:SuperTypeId>
     <JobId>
       <uax:NodeClass>Variable_2</uax:NodeClass>
@@ -957,7 +1571,7 @@
       <uax:Name>ProductionStoppedEventType</uax:Name>
     </uax:BrowseName>
     <uax:SuperTypeId>
-      <uax:Identifier>i=2130</uax:Identifier>
+      <uax:Identifier>i=2041</uax:Identifier>
     </uax:SuperTypeId>
     <JobId>
       <uax:NodeClass>Variable_2</uax:NodeClass>

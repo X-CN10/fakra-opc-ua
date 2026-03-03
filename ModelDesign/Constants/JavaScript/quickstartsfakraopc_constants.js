@@ -1,19 +1,38 @@
 export const NS = 'http://schleuniger.com/Default/';
 
 export const BrowseNames = Object.freeze({
+   ActivateJob: 'ActivateJob',
+   ActivationTime: 'ActivationTime',
+   ActiveJobState: 'ActiveJobState',
    AddJob: 'AddJob',
+   ArticleId: 'ArticleId',
+   ArticleList: 'ArticleList',
+   ArticleListType: 'ArticleListType',
+   ArticleName: 'ArticleName',
+   ArticleNumber: 'ArticleNumber',
+   ArticleType: 'ArticleType',
    BadPartCount: 'BadPartCount',
+   BatchCount: 'BatchCount',
    BatchFinishedEventType: 'BatchFinishedEventType',
+   BatchQuantity: 'BatchQuantity',
    BatchSequenceNumber: 'BatchSequenceNumber',
+   CanBeProduced: 'CanBeProduced',
    CycleId: 'CycleId',
    DeleteJob: 'DeleteJob',
    GenerateReport: 'GenerateReport',
    GoodPartCount: 'GoodPartCount',
    JobFinishedEventType: 'JobFinishedEventType',
    JobId: 'JobId',
+   JobInfoType: 'JobInfoType',
+   JobList: 'JobList',
+   JobListType: 'JobListType',
+   JobName: 'JobName',
+   JobQuantity: 'JobQuantity',
+   JobState: 'JobState',
    JobStoppedEventType: 'JobStoppedEventType',
    Machine: 'Machine',
    ProductionStartedEventType: 'ProductionStartedEventType',
+   ProductionStatus: 'ProductionStatus',
    ProductionStoppedEventType: 'ProductionStoppedEventType',
    SystemCycleStatusEventType: 'SystemCycleStatusEventType',
    WireFinishedEventType: 'WireFinishedEventType',
@@ -21,11 +40,22 @@ export const BrowseNames = Object.freeze({
 });
 
 export const MethodIds = Object.freeze({
+   Machine_AddJob: 'nsu=' + NS + ';s=AddJob',
+   Machine_ActivateJob: 'nsu=' + NS + ';i=70',
    Machine_DeleteJob: 'nsu=' + NS + ';i=2',
    Machine_GenerateReport: 'nsu=' + NS + ';i=9',
 });
 
+export const ObjectIds = Object.freeze({
+   Machine_JobList: 'nsu=' + NS + ';i=68',
+   Machine_ArticleList: 'nsu=' + NS + ';i=69',
+});
+
 export const ObjectTypeIds = Object.freeze({
+   ArticleType: 'nsu=' + NS + ';i=48',
+   JobInfoType: 'nsu=' + NS + ';i=72',
+   JobListType: 'nsu=' + NS + ';i=64',
+   ArticleListType: 'nsu=' + NS + ';i=65',
    Machine: 'nsu=' + NS + ';s=Machine',
    SystemCycleStatusEventType: 'nsu=' + NS + ';i=12',
    WireFinishedEventType: 'nsu=' + NS + ';i=19',
@@ -37,8 +67,25 @@ export const ObjectTypeIds = Object.freeze({
 });
 
 export const VariableIds = Object.freeze({
+   ArticleType_ArticleId: 'nsu=' + NS + ';i=49',
+   ArticleType_ArticleName: 'nsu=' + NS + ';i=50',
+   ArticleType_ArticleNumber: 'nsu=' + NS + ';i=51',
+   ArticleType_CanBeProduced: 'nsu=' + NS + ';i=52',
+   JobInfoType_JobId: 'nsu=' + NS + ';i=73',
+   JobInfoType_JobName: 'nsu=' + NS + ';i=74',
+   JobInfoType_JobQuantity: 'nsu=' + NS + ';i=75',
+   JobInfoType_GoodPartCount: 'nsu=' + NS + ';i=76',
+   JobInfoType_BadPartCount: 'nsu=' + NS + ';i=77',
+   JobInfoType_BatchQuantity: 'nsu=' + NS + ';i=78',
+   JobInfoType_BatchCount: 'nsu=' + NS + ';i=79',
+   JobInfoType_ArticleId: 'nsu=' + NS + ';i=80',
+   JobInfoType_JobState: 'nsu=' + NS + ';i=81',
+   JobInfoType_ActivationTime: 'nsu=' + NS + ';i=82',
+   Machine_ProductionStatus: 'nsu=' + NS + ';i=66',
+   Machine_ActiveJobState: 'nsu=' + NS + ';i=67',
    Machine_AddJob_InputArguments: 'nsu=' + NS + ';i=6',
    Machine_AddJob_OutputArguments: 'nsu=' + NS + ';i=7',
+   Machine_ActivateJob_InputArguments: 'nsu=' + NS + ';i=71',
    Machine_DeleteJob_InputArguments: 'nsu=' + NS + ';i=3',
    Machine_GenerateReport_InputArguments: 'nsu=' + NS + ';i=10',
    Machine_GenerateReport_OutputArguments: 'nsu=' + NS + ';i=11',

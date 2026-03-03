@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LastModified="2026-03-02T09:22:59.9219672Z" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">
+<UANodeSet xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" LastModified="2026-03-03T04:06:38.2498843Z" xmlns="http://opcfoundation.org/UA/2011/03/UANodeSet.xsd">
   <NamespaceUris>
     <Uri>http://schleuniger.com/Default/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri="http://schleuniger.com/Default/" Version="1.0.0" PublicationDate="2026-03-02T09:22:59.9219672Z" ModelVersion="1.0.0">
+    <Model ModelUri="http://schleuniger.com/Default/" Version="1.0.0" PublicationDate="2026-03-03T04:06:38.2498843Z" ModelVersion="1.0.0">
       <RequiredModel ModelUri="http://opcfoundation.org/UA/" XmlSchemaUri="http://opcfoundation.org/UA/2008/02/Types.xsd" />
     </Model>
   </Models>
@@ -62,15 +62,202 @@
     <Alias Alias="AlarmGroupMember">i=16362</Alias>
     <Alias Alias="AlarmSuppressionGroupMember">i=32059</Alias>
   </Aliases>
+  <UAObjectType NodeId="ns=1;i=48" BrowseName="1:ArticleType">
+    <DisplayName>ArticleType</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=49</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=50</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=51</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=52</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId="ns=1;i=49" BrowseName="1:ArticleId" ParentNodeId="ns=1;i=48" DataType="UInt32">
+    <DisplayName>ArticleId</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=48</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=50" BrowseName="1:ArticleName" ParentNodeId="ns=1;i=48" DataType="String">
+    <DisplayName>ArticleName</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=48</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=51" BrowseName="1:ArticleNumber" ParentNodeId="ns=1;i=48" DataType="String">
+    <DisplayName>ArticleNumber</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=48</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=52" BrowseName="1:CanBeProduced" ParentNodeId="ns=1;i=48" DataType="Boolean">
+    <DisplayName>CanBeProduced</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=48</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId="ns=1;i=72" BrowseName="1:JobInfoType">
+    <DisplayName>JobInfoType</DisplayName>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=73</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=74</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=75</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=76</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=77</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=78</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=79</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=80</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=81</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=82</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId="ns=1;i=73" BrowseName="1:JobId" ParentNodeId="ns=1;i=72" DataType="UInt32">
+    <DisplayName>JobId</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=72</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=74" BrowseName="1:JobName" ParentNodeId="ns=1;i=72" DataType="String">
+    <DisplayName>JobName</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=72</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=75" BrowseName="1:JobQuantity" ParentNodeId="ns=1;i=72" DataType="UInt32">
+    <DisplayName>JobQuantity</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=72</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=76" BrowseName="1:GoodPartCount" ParentNodeId="ns=1;i=72" DataType="UInt32">
+    <DisplayName>GoodPartCount</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=72</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=77" BrowseName="1:BadPartCount" ParentNodeId="ns=1;i=72" DataType="UInt32">
+    <DisplayName>BadPartCount</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=72</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=78" BrowseName="1:BatchQuantity" ParentNodeId="ns=1;i=72" DataType="UInt32">
+    <DisplayName>BatchQuantity</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=72</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=79" BrowseName="1:BatchCount" ParentNodeId="ns=1;i=72" DataType="UInt32">
+    <DisplayName>BatchCount</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=72</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=80" BrowseName="1:ArticleId" ParentNodeId="ns=1;i=72" DataType="UInt32">
+    <DisplayName>ArticleId</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=72</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=81" BrowseName="1:JobState" ParentNodeId="ns=1;i=72" DataType="Int32">
+    <DisplayName>JobState</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=72</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=82" BrowseName="1:ActivationTime" ParentNodeId="ns=1;i=72" DataType="DateTime">
+    <DisplayName>ActivationTime</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=80</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=72</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId="ns=1;i=64" BrowseName="1:JobListType">
+    <DisplayName>JobListType</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId="ns=1;i=65" BrowseName="1:ArticleListType">
+    <DisplayName>ArticleListType</DisplayName>
+    <References>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
+    </References>
+  </UAObjectType>
   <UAObjectType NodeId="ns=1;s=Machine" BrowseName="1:Machine">
     <DisplayName>Machine</DisplayName>
     <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=66</Reference>
+      <Reference ReferenceType="HasProperty">ns=1;i=67</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=68</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=69</Reference>
       <Reference ReferenceType="HasComponent">ns=1;s=AddJob</Reference>
+      <Reference ReferenceType="HasComponent">ns=1;i=70</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=2</Reference>
       <Reference ReferenceType="HasComponent">ns=1;i=9</Reference>
       <Reference ReferenceType="HasSubtype" IsForward="false">i=58</Reference>
     </References>
   </UAObjectType>
+  <UAVariable NodeId="ns=1;i=66" BrowseName="1:ProductionStatus" ParentNodeId="ns=1;s=Machine" DataType="Int32">
+    <DisplayName>ProductionStatus</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Machine</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId="ns=1;i=67" BrowseName="1:ActiveJobState" ParentNodeId="ns=1;s=Machine" DataType="Int32">
+    <DisplayName>ActiveJobState</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;s=Machine</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId="ns=1;i=68" BrowseName="1:JobList" ParentNodeId="ns=1;s=Machine">
+    <DisplayName>JobList</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=64</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId="ns=1;i=69" BrowseName="1:ArticleList" ParentNodeId="ns=1;s=Machine">
+    <DisplayName>ArticleList</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">ns=1;i=65</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</Reference>
+    </References>
+  </UAObject>
   <UAMethod NodeId="ns=1;s=AddJob" BrowseName="1:AddJob" ParentNodeId="ns=1;s=Machine" MethodDeclarationId="ns=1;i=0">
     <DisplayName>AddJob</DisplayName>
     <Description>Add a new job.</Description>
@@ -180,8 +367,45 @@
       </ListOfExtensionObject>
     </Value>
   </UAVariable>
+  <UAMethod NodeId="ns=1;i=70" BrowseName="1:ActivateJob" ParentNodeId="ns=1;s=Machine">
+    <DisplayName>ActivateJob</DisplayName>
+    <Description>Activate a job for production.</Description>
+    <References>
+      <Reference ReferenceType="HasProperty">ns=1;i=71</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasComponent" IsForward="false">ns=1;s=Machine</Reference>
+    </References>
+  </UAMethod>
+  <UAVariable NodeId="ns=1;i=71" BrowseName="InputArguments" ParentNodeId="ns=1;i=70" DataType="i=296" ValueRank="1" ArrayDimensions="0">
+    <DisplayName>InputArguments</DisplayName>
+    <References>
+      <Reference ReferenceType="HasTypeDefinition">i=68</Reference>
+      <Reference ReferenceType="HasModellingRule">i=78</Reference>
+      <Reference ReferenceType="HasProperty" IsForward="false">ns=1;i=70</Reference>
+    </References>
+    <Value>
+      <ListOfExtensionObject xmlns="http://opcfoundation.org/UA/2008/02/Types.xsd">
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>JobId</Name>
+              <DataType>
+                <Identifier>i=7</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+      </ListOfExtensionObject>
+    </Value>
+  </UAVariable>
   <UAMethod NodeId="ns=1;i=2" BrowseName="1:DeleteJob" ParentNodeId="ns=1;s=Machine">
     <DisplayName>DeleteJob</DisplayName>
+    <Description>Delete a job from the machine.</Description>
     <References>
       <Reference ReferenceType="HasProperty">ns=1;i=3</Reference>
       <Reference ReferenceType="HasModellingRule">i=78</Reference>
@@ -217,7 +441,7 @@
   </UAVariable>
   <UAMethod NodeId="ns=1;i=9" BrowseName="1:GenerateReport" ParentNodeId="ns=1;s=Machine">
     <DisplayName>GenerateReport</DisplayName>
-    <Description>Add a new job.</Description>
+    <Description>Generate a report file.</Description>
     <References>
       <Reference ReferenceType="HasProperty">ns=1;i=10</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=11</Reference>
@@ -240,9 +464,39 @@
           </TypeId>
           <Body>
             <Argument>
-              <Name>jobDescription</Name>
+              <Name>JobId</Name>
               <DataType>
-                <Identifier>i=12</Identifier>
+                <Identifier>i=7</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>Scope</Name>
+              <DataType>
+                <Identifier>i=6</Identifier>
+              </DataType>
+              <ValueRank>-1</ValueRank>
+              <ArrayDimensions />
+            </Argument>
+          </Body>
+        </ExtensionObject>
+        <ExtensionObject>
+          <TypeId>
+            <Identifier>i=297</Identifier>
+          </TypeId>
+          <Body>
+            <Argument>
+              <Name>ScopeId</Name>
+              <DataType>
+                <Identifier>i=7</Identifier>
               </DataType>
               <ValueRank>-1</ValueRank>
               <ArrayDimensions />
@@ -267,9 +521,9 @@
           </TypeId>
           <Body>
             <Argument>
-              <Name>jobId</Name>
+              <Name>ReportFileNode</Name>
               <DataType>
-                <Identifier>i=12</Identifier>
+                <Identifier>i=17</Identifier>
               </DataType>
               <ValueRank>-1</ValueRank>
               <ArrayDimensions />
@@ -303,7 +557,7 @@
       <Reference ReferenceType="HasProperty">ns=1;i=22</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=23</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=24</Reference>
-      <Reference ReferenceType="HasSubtype" IsForward="false">i=2130</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=2041</Reference>
     </References>
   </UAObjectType>
   <UAVariable NodeId="ns=1;i=20" BrowseName="1:JobId" ParentNodeId="ns=1;i=19" DataType="UInt32">
@@ -353,7 +607,7 @@
       <Reference ReferenceType="HasProperty">ns=1;i=5</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=25</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=26</Reference>
-      <Reference ReferenceType="HasSubtype" IsForward="false">i=2130</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=2041</Reference>
     </References>
   </UAObjectType>
   <UAVariable NodeId="ns=1;i=4" BrowseName="1:BatchSequenceNumber" ParentNodeId="ns=1;i=3048" DataType="UInt32">
@@ -394,7 +648,7 @@
       <Reference ReferenceType="HasProperty">ns=1;i=31</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=32</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=33</Reference>
-      <Reference ReferenceType="HasSubtype" IsForward="false">i=2130</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=2041</Reference>
     </References>
   </UAObjectType>
   <UAVariable NodeId="ns=1;i=31" BrowseName="1:JobId" ParentNodeId="ns=1;i=30" DataType="UInt32">
@@ -427,7 +681,7 @@
       <Reference ReferenceType="HasProperty">ns=1;i=35</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=36</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=37</Reference>
-      <Reference ReferenceType="HasSubtype" IsForward="false">i=2130</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=2041</Reference>
     </References>
   </UAObjectType>
   <UAVariable NodeId="ns=1;i=35" BrowseName="1:JobId" ParentNodeId="ns=1;i=34" DataType="UInt32">
@@ -460,7 +714,7 @@
       <Reference ReferenceType="HasProperty">ns=1;i=39</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=40</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=41</Reference>
-      <Reference ReferenceType="HasSubtype" IsForward="false">i=2130</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=2041</Reference>
     </References>
   </UAObjectType>
   <UAVariable NodeId="ns=1;i=39" BrowseName="1:JobId" ParentNodeId="ns=1;i=38" DataType="UInt32">
@@ -493,7 +747,7 @@
       <Reference ReferenceType="HasProperty">ns=1;i=43</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=44</Reference>
       <Reference ReferenceType="HasProperty">ns=1;i=45</Reference>
-      <Reference ReferenceType="HasSubtype" IsForward="false">i=2130</Reference>
+      <Reference ReferenceType="HasSubtype" IsForward="false">i=2041</Reference>
     </References>
   </UAObjectType>
   <UAVariable NodeId="ns=1;i=43" BrowseName="1:JobId" ParentNodeId="ns=1;i=42" DataType="UInt32">

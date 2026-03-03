@@ -1,4 +1,4 @@
-﻿using Opc.Ua;
+using Opc.Ua;
 using Quickstarts.FakraOpc;
 using SqlSugar;
 using WebApiOpcServer.Model;
@@ -14,17 +14,31 @@ namespace Quickstarts.FakraOpc
 
             AddJob.OnCall = OnAddJob;
             DeleteJob.OnCall = OnDeleteJob;
-            GenerateReport.OnCall = OnGenerateValues;
+            ActivateJob.OnCall = OnActivateJob;
+            GenerateReport.OnCall = OnGenerateReport;
         }
-        protected virtual ServiceResult OnGenerateValues(
+
+        protected virtual ServiceResult OnGenerateReport(
            ISystemContext context,
            MethodState method,
            NodeId objectId,
-           string jobDescription,
-           ref string jobId)
+           uint jobId,
+           int scope,
+           uint scopeId,
+           ref NodeId reportFileNode)
         {
             return ServiceResult.Good;
         }
+
+        protected virtual ServiceResult OnActivateJob(
+           ISystemContext context,
+           MethodState method,
+           NodeId objectId,
+           uint jobId)
+        {
+            return ServiceResult.Good;
+        }
+
         protected virtual ServiceResult OnAddJob(
            ISystemContext context,
            MethodState method,

@@ -1,19 +1,38 @@
 export const NS = 'http://schleuniger.com/Default/';
 
 export class BrowseNames {
+   static readonly ActivateJob: string = 'ActivateJob'
+   static readonly ActivationTime: string = 'ActivationTime'
+   static readonly ActiveJobState: string = 'ActiveJobState'
    static readonly AddJob: string = 'AddJob'
+   static readonly ArticleId: string = 'ArticleId'
+   static readonly ArticleList: string = 'ArticleList'
+   static readonly ArticleListType: string = 'ArticleListType'
+   static readonly ArticleName: string = 'ArticleName'
+   static readonly ArticleNumber: string = 'ArticleNumber'
+   static readonly ArticleType: string = 'ArticleType'
    static readonly BadPartCount: string = 'BadPartCount'
+   static readonly BatchCount: string = 'BatchCount'
    static readonly BatchFinishedEventType: string = 'BatchFinishedEventType'
+   static readonly BatchQuantity: string = 'BatchQuantity'
    static readonly BatchSequenceNumber: string = 'BatchSequenceNumber'
+   static readonly CanBeProduced: string = 'CanBeProduced'
    static readonly CycleId: string = 'CycleId'
    static readonly DeleteJob: string = 'DeleteJob'
    static readonly GenerateReport: string = 'GenerateReport'
    static readonly GoodPartCount: string = 'GoodPartCount'
    static readonly JobFinishedEventType: string = 'JobFinishedEventType'
    static readonly JobId: string = 'JobId'
+   static readonly JobInfoType: string = 'JobInfoType'
+   static readonly JobList: string = 'JobList'
+   static readonly JobListType: string = 'JobListType'
+   static readonly JobName: string = 'JobName'
+   static readonly JobQuantity: string = 'JobQuantity'
+   static readonly JobState: string = 'JobState'
    static readonly JobStoppedEventType: string = 'JobStoppedEventType'
    static readonly Machine: string = 'Machine'
    static readonly ProductionStartedEventType: string = 'ProductionStartedEventType'
+   static readonly ProductionStatus: string = 'ProductionStatus'
    static readonly ProductionStoppedEventType: string = 'ProductionStoppedEventType'
    static readonly SystemCycleStatusEventType: string = 'SystemCycleStatusEventType'
    static readonly WireFinishedEventType: string = 'WireFinishedEventType'
@@ -21,11 +40,22 @@ export class BrowseNames {
 }
 
 export class MethodIds {
+    static readonly Machine_AddJob: string = 'nsu=' + NS + ';s=AddJob'
+    static readonly Machine_ActivateJob: string = 'nsu=' + NS + ';i=70'
     static readonly Machine_DeleteJob: string = 'nsu=' + NS + ';i=2'
     static readonly Machine_GenerateReport: string = 'nsu=' + NS + ';i=9'
 }
 
+export class ObjectIds {
+    static readonly Machine_JobList: string = 'nsu=' + NS + ';i=68'
+    static readonly Machine_ArticleList: string = 'nsu=' + NS + ';i=69'
+}
+
 export class ObjectTypeIds {
+    static readonly ArticleType: string = 'nsu=' + NS + ';i=48'
+    static readonly JobInfoType: string = 'nsu=' + NS + ';i=72'
+    static readonly JobListType: string = 'nsu=' + NS + ';i=64'
+    static readonly ArticleListType: string = 'nsu=' + NS + ';i=65'
     static readonly Machine: string = 'nsu=' + NS + ';s=Machine'
     static readonly SystemCycleStatusEventType: string = 'nsu=' + NS + ';i=12'
     static readonly WireFinishedEventType: string = 'nsu=' + NS + ';i=19'
@@ -37,8 +67,25 @@ export class ObjectTypeIds {
 }
 
 export class VariableIds {
+    static readonly ArticleType_ArticleId: string = 'nsu=' + NS + ';i=49'
+    static readonly ArticleType_ArticleName: string = 'nsu=' + NS + ';i=50'
+    static readonly ArticleType_ArticleNumber: string = 'nsu=' + NS + ';i=51'
+    static readonly ArticleType_CanBeProduced: string = 'nsu=' + NS + ';i=52'
+    static readonly JobInfoType_JobId: string = 'nsu=' + NS + ';i=73'
+    static readonly JobInfoType_JobName: string = 'nsu=' + NS + ';i=74'
+    static readonly JobInfoType_JobQuantity: string = 'nsu=' + NS + ';i=75'
+    static readonly JobInfoType_GoodPartCount: string = 'nsu=' + NS + ';i=76'
+    static readonly JobInfoType_BadPartCount: string = 'nsu=' + NS + ';i=77'
+    static readonly JobInfoType_BatchQuantity: string = 'nsu=' + NS + ';i=78'
+    static readonly JobInfoType_BatchCount: string = 'nsu=' + NS + ';i=79'
+    static readonly JobInfoType_ArticleId: string = 'nsu=' + NS + ';i=80'
+    static readonly JobInfoType_JobState: string = 'nsu=' + NS + ';i=81'
+    static readonly JobInfoType_ActivationTime: string = 'nsu=' + NS + ';i=82'
+    static readonly Machine_ProductionStatus: string = 'nsu=' + NS + ';i=66'
+    static readonly Machine_ActiveJobState: string = 'nsu=' + NS + ';i=67'
     static readonly Machine_AddJob_InputArguments: string = 'nsu=' + NS + ';i=6'
     static readonly Machine_AddJob_OutputArguments: string = 'nsu=' + NS + ';i=7'
+    static readonly Machine_ActivateJob_InputArguments: string = 'nsu=' + NS + ';i=71'
     static readonly Machine_DeleteJob_InputArguments: string = 'nsu=' + NS + ';i=3'
     static readonly Machine_GenerateReport_InputArguments: string = 'nsu=' + NS + ';i=10'
     static readonly Machine_GenerateReport_OutputArguments: string = 'nsu=' + NS + ';i=11'
