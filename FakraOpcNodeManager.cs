@@ -9,6 +9,8 @@ namespace WebApiOpcServer
         private FakraOpcServerConfiguration m_configuration;
         private Quickstarts.FakraOpc.MachineState m_machine;
 
+        public Quickstarts.FakraOpc.MachineState Machine => m_machine;
+
         public FakraOpcNodeManager(IServerInternal server, ApplicationConfiguration configuration, params string[] namespaceUris)
             : base(server, configuration, namespaceUris)
         {
@@ -68,9 +70,10 @@ namespace WebApiOpcServer
                 root.AddReference(Opc.Ua.ReferenceTypeIds.Organizes, false, m_machine.NodeId);
                 AddPredefinedNode(SystemContext, m_machine);
 
+                m_machine.SetNodeManager(this);
+
                 // TODO: load articles from database or configuration
-                // AddArticle(m_machine.ArticleList, 100, "Heta520-P26", "Heta520-P26", true);
-                AddArticle(m_machine.ArticleList, 200, "547-D-F-F-0.13", "547-D-F-F-0.13", true);
+                AddArticle(m_machine.ArticleList, 300, "Heta520-P26", "Heta520-P26", true);
             }
         }
 
@@ -106,8 +109,98 @@ namespace WebApiOpcServer
         }
 
         /// <summary>
-        /// Returns a unique handle for the node.
+        /// Checks whether an article with the given ID exists in the address space.
         /// </summary>
+        public bool ArticleExists(uint articleId)
+        {
+            lock (Lock)
+            {
+                var nodeId = new NodeId($"Article_{articleId}", NamespaceIndex);
+                return PredefinedNodes != null && PredefinedNodes.ContainsKey(nodeId);
+            }
+        }
+
+        /// <summary>
+        /// Creates a new Job node under the JobList in the OPC UA address space.
+        /// </summary>
+        public Quickstarts.FakraOpc.JobInfoState AddJob(
+            Quickstarts.FakraOpc.JobListState jobList,
+            uint jobId,
+            string jobName,
+            uint jobQuantity,
+            uint batchQuantity,
+            uint articleId)
+        {
+            lock (Lock)
+            {
+                var job = new Quickstarts.FakraOpc.JobInfoState(jobList);
+
+                job.Create(
+                    SystemContext,
+                    new NodeId($"Job_{jobId}", NamespaceIndex),
+                    new QualifiedName($"Job_{jobId}", NamespaceIndex),
+                    null,
+                    true);
+
+                job.JobId.Value = jobId;
+                job.JobName.Value = jobName;
+                job.JobQuantity.Value = jobQuantity;
+                job.BatchQuantity.Value = batchQuantity;
+                job.ArticleId.Value = articleId;
+                job.GoodPartCount.Value = 0;
+                job.BadPartCount.Value = 0;
+                job.BatchCount.Value = 0;
+                job.JobState.Value = 0; // Initial
+
+                AddPredefinedNode(SystemContext, job);
+                return job;
+            }
+        }
+
+        /// <summary>
+        /// Finds an existing Job node by its JobId.
+        /// </summary>
+        public Quickstarts.FakraOpc.JobInfoState FindJob(uint jobId)
+        {
+            lock (Lock)
+            {
+                var nodeId = new NodeId($"Job_{jobId}", NamespaceIndex);
+                if (PredefinedNodes != null && PredefinedNodes.TryGetValue(nodeId, out var node))
+                {
+                    return node as Quickstarts.FakraOpc.JobInfoState;
+                }
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Removes a Job node and its children from the address space.
+        /// </summary>
+        public bool RemoveJob(uint jobId)
+        {
+            lock (Lock)
+            {
+                var nodeId = new NodeId($"Job_{jobId}", NamespaceIndex);
+                if (PredefinedNodes == null || !PredefinedNodes.TryGetValue(nodeId, out var node))
+                {
+                    return false;
+                }
+
+                var children = new List<BaseInstanceState>();
+                node.GetChildren(SystemContext, children);
+                foreach (var child in children)
+                {
+                    if (child.NodeId != null)
+                    {
+                        PredefinedNodes.Remove(child.NodeId);
+                    }
+                }
+
+                PredefinedNodes.Remove(nodeId);
+                return true;
+            }
+        }
+
         protected override NodeHandle GetManagerHandle(ServerSystemContext context, NodeId nodeId, IDictionary<NodeId, NodeState> cache)
         {
             lock (Lock)
@@ -135,9 +228,6 @@ namespace WebApiOpcServer
             }
         }
 
-        /// <summary>
-        /// Verifies that the specified node exists.
-        /// </summary>
         protected override NodeState ValidateNode(
             ServerSystemContext context,
             NodeHandle handle,
