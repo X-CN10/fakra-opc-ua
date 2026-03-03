@@ -130,7 +130,7 @@ The root entry point, located under the `Objects` folder. Supports event subscri
 
 #### AddJob
 
-Creates a new production job.
+Creates a new production job. The server validates input parameters, creates a JobInfoType instance node under JobList, and allocates a unique JobId.
 
 | Direction | Name | DataType | Description |
 |---|---|---|---|
@@ -140,21 +140,40 @@ Creates a new production job.
 | Input | ArticleId | UInt32 | ID of the article to produce |
 | Output | JobId | UInt32 | Assigned unique job ID |
 
+| Result Code | Description |
+|---|---|
+| Good | Job created successfully |
+| BadArgumentsMissing | One or more input arguments are missing or invalid |
+| BadNoMatch | Article with the specified ArticleId not found |
+| BadInternalError | Internal server error |
+
 #### ActivateJob
 
-Activates a job for production (downloads recipe, releases machine).
+Activates a job for production (downloads recipe, releases machine). Sets the Job's `JobState` to `Active`, records `ActivationTime`, and updates the Machine's `ActiveJobState`.
 
 | Direction | Name | DataType | Description |
 |---|---|---|---|
 | Input | JobId | UInt32 | The job to activate |
 
+| Result Code | Description |
+|---|---|
+| Good | Job activated successfully |
+| BadNotFound | Job with the specified JobId not found |
+| BadInternalError | Internal server error |
+
 #### DeleteJob
 
-Deletes a job from the machine.
+Deletes a job from the machine and removes its node from the JobList.
 
 | Direction | Name | DataType | Description |
 |---|---|---|---|
 | Input | JobId | UInt32 | The job to delete |
+
+| Result Code | Description |
+|---|---|
+| Good | Job deleted successfully |
+| BadNotFound | Job with the specified JobId not found |
+| BadInternalError | Internal server error |
 
 #### GenerateReport
 
@@ -277,9 +296,9 @@ Triggers a `ProductionStartedEvent` on the OPC UA server.
 WebApiOpcServer/
 ├── Program.cs                      — Application entry point, starts OPC UA + Web API
 ├── FakraOpcServer.cs               — OPC UA StandardServer implementation
-├── FakraOpcNodeManager.cs          — Custom node manager, loads address space
+├── FakraOpcNodeManager.cs          — Custom node manager, manages address space and dynamic Job/Article nodes
 ├── FakraOpcNodeManagerFactory.cs   — Factory for the node manager
-├── FakraOpcMachineState.cs         — Machine business logic (AddJob, DeleteJob, etc.)
+├── FakraOpcMachineState.cs         — Machine business logic (AddJob, ActivateJob, DeleteJob method callbacks)
 ├── FakraOpcServerConfiguration.cs  — Server configuration model
 ├── FakraOpcServer.Config.xml       — OPC UA application configuration
 ├── Controllers/
@@ -300,7 +319,7 @@ WebApiOpcServer/
 ## Prerequisites
 
 - .NET 8.0 SDK
-- SQL Server (for job persistence)
+- SQL Server (optional, for job persistence; core OPC UA functionality works without it)
 - OPC UA Model Compiler (for regenerating the information model)
 
 ## Configuration
@@ -316,7 +335,7 @@ Configured in `FakraOpcServer.Config.xml`:
 
 ### Database
 
-Connection string is configured in `FakraOpcMachineState.cs`. The server uses SQL Server with the `TB_WorkOrderManagement` table for job persistence.
+Connection string is configured in `FakraOpcMachineState.cs`. The server uses SQL Server with the `TB_WorkOrderManagement` table for job persistence. Database operations are non-critical — OPC UA methods (AddJob/DeleteJob, etc.) will function normally even if the database is unavailable (operating on the OPC UA address space only), with database errors logged to the console.
 
 ## Build & Run
 

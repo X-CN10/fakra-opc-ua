@@ -130,7 +130,7 @@ Objects (i=85)
 
 #### AddJob — 创建作业
 
-创建一个新的生产作业。
+创建一个新的生产作业。服务器会验证输入参数，在 JobList 中创建 JobInfoType 实例节点，并分配唯一 JobId。
 
 | 方向 | 名称 | 数据类型 | 说明 |
 |---|---|---|---|
@@ -140,21 +140,40 @@ Objects (i=85)
 | 输入 | ArticleId | UInt32 | 要生产的产品 ID |
 | 输出 | JobId | UInt32 | 分配的唯一作业 ID |
 
+| 返回状态码 | 说明 |
+|---|---|
+| Good | 作业创建成功 |
+| BadArgumentsMissing | 输入参数缺失或无效 |
+| BadNoMatch | 指定的 ArticleId 不存在 |
+| BadInternalError | 服务器内部错误 |
+
 #### ActivateJob — 激活作业
 
-激活作业以进行生产（下载配方、释放机器）。
+激活作业以进行生产（下载配方、释放机器）。激活后 Job 的 `JobState` 变为 `Active`，`ActivationTime` 被设置，Machine 的 `ActiveJobState` 同步更新。
 
 | 方向 | 名称 | 数据类型 | 说明 |
 |---|---|---|---|
 | 输入 | JobId | UInt32 | 要激活的作业 ID |
 
+| 返回状态码 | 说明 |
+|---|---|
+| Good | 作业激活成功 |
+| BadNotFound | 指定的 JobId 不存在 |
+| BadInternalError | 服务器内部错误 |
+
 #### DeleteJob — 删除作业
 
-从机器中删除作业。
+从机器中删除作业，移除 JobList 中对应的节点。
 
 | 方向 | 名称 | 数据类型 | 说明 |
 |---|---|---|---|
 | 输入 | JobId | UInt32 | 要删除的作业 ID |
+
+| 返回状态码 | 说明 |
+|---|---|
+| Good | 作业删除成功 |
+| BadNotFound | 指定的 JobId 不存在 |
+| BadInternalError | 服务器内部错误 |
 
 #### GenerateReport — 生成报告
 
@@ -277,9 +296,9 @@ ProductionStopped   ← 机器停止处理
 WebApiOpcServer/
 ├── Program.cs                      — 应用入口，启动 OPC UA + Web API
 ├── FakraOpcServer.cs               — OPC UA StandardServer 实现
-├── FakraOpcNodeManager.cs          — 自定义节点管理器，加载地址空间
+├── FakraOpcNodeManager.cs          — 自定义节点管理器，管理地址空间及 Job/Article 动态节点
 ├── FakraOpcNodeManagerFactory.cs   — 节点管理器工厂
-├── FakraOpcMachineState.cs         — Machine 业务逻辑（AddJob, DeleteJob 等）
+├── FakraOpcMachineState.cs         — Machine 业务逻辑（AddJob, ActivateJob, DeleteJob 等方法回调）
 ├── FakraOpcServerConfiguration.cs  — 服务器配置模型
 ├── FakraOpcServer.Config.xml       — OPC UA 应用配置文件
 ├── Controllers/
@@ -300,7 +319,7 @@ WebApiOpcServer/
 ## 环境要求
 
 - .NET 8.0 SDK
-- SQL Server（用于作业持久化）
+- SQL Server（可选，用于作业持久化；未连接时不影响 OPC UA 核心功能）
 - OPC UA Model Compiler（用于重新生成信息模型）
 
 ## 配置
@@ -316,7 +335,7 @@ WebApiOpcServer/
 
 ### 数据库
 
-连接字符串在 `FakraOpcMachineState.cs` 中配置。服务器使用 SQL Server，通过 `TB_WorkOrderManagement` 表进行作业持久化。
+连接字符串在 `FakraOpcMachineState.cs` 中配置。服务器使用 SQL Server，通过 `TB_WorkOrderManagement` 表进行作业持久化。数据库操作为非关键路径——即使数据库不可用，AddJob/DeleteJob 等 OPC UA 方法仍会正常工作（仅 OPC UA 地址空间操作），数据库错误会记录到控制台日志。
 
 ## 构建与运行
 
