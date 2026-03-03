@@ -1,0 +1,16 @@
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:ua="http://opcfoundation.org/UA/2008/02/Types.xsd"
+  xmlns:tns="http://schleuniger.com/Default/"
+  targetNamespace="http://schleuniger.com/Default/"
+  elementFormDefault="qualified"
+>
+  <xs:annotation>
+    <xs:appinfo>
+      <ua:Model ModelUri="http://schleuniger.com/Default/" Version="1.0.0" PublicationDate="2026-03-02T09:22:59.9219672Z" />
+    </xs:appinfo>
+  </xs:annotation>
+  
+  <xs:import namespace="http://opcfoundation.org/UA/2008/02/Types.xsd" />
+
+</xs:schema>

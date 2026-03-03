@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<opc:ModelDesign
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:opc="http://opcfoundation.org/UA/ModelDesign.xsd"
+    xmlns:ua="http://opcfoundation.org/UA/"
+    xmlns:uax="http://opcfoundation.org/UA/2008/02/Types.xsd"
+    xmlns="http://schleuniger.com/Default/"
+  TargetNamespace="http://schleuniger.com/Default/"
+>
+	<opc:Namespaces>
+		<opc:Namespace Name="OpcUa" Prefix="Opc.Ua" XmlNamespace="http://opcfoundation.org/UA/2008/02/Types.xsd">http://opcfoundation.org/UA/</opc:Namespace>
+		<opc:Namespace Name="FakraOpc" Prefix="Quickstarts.FakraOpc" InternalPrefix="Quickstarts.FakraOpc">http://schleuniger.com/Default/</opc:Namespace>
+	</opc:Namespaces>
+	<opc:Method SymbolicName="GenerateValuesMethodType" ModellingRule="Mandatory">
+		<opc:Description>Add a new job.</opc:Description>
+		<opc:InputArguments>
+			<opc:Argument Name="jobDescription" DataType="ua:String" ValueRank="Scalar" />
+		</opc:InputArguments>
+		<opc:OutputArguments>
+			<opc:Argument Name="jobId" DataType="ua:String" ValueRank="Scalar" />
+		</opc:OutputArguments>
+	</opc:Method>
+	<opc:Method SymbolicName="AddJobMethodType" ModellingRule="Mandatory">
+		<opc:Description>Add a new job.</opc:Description>
+		<opc:InputArguments>
+			<opc:Argument Name="JobName" DataType="ua:String" ValueRank="Scalar" />
+			<opc:Argument Name="JobQuantity" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Argument Name="BatchQuantity" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Argument Name="ArticleId" DataType="ua:UInt32" ValueRank="Scalar" />
+		</opc:InputArguments>
+		<opc:OutputArguments>
+			<opc:Argument Name="JobId" DataType="ua:UInt32" ValueRank="Scalar" />
+		</opc:OutputArguments>
+	</opc:Method>
+	<opc:Method SymbolicName="DeleteJobMethodType" ModellingRule="Mandatory">
+		<opc:InputArguments>
+			<opc:Argument Name="JobId" DataType="ua:UInt32" ValueRank="Scalar" />
+		</opc:InputArguments>
+	</opc:Method>
+	<opc:ObjectType SymbolicName="Machine">
+		<opc:Children>
+			<opc:Method SymbolicName="AddJob" TypeDefinition="AddJobMethodType" ModellingRule="Mandatory" />
+			<opc:Method SymbolicName="DeleteJob" TypeDefinition="DeleteJobMethodType" ModellingRule="Mandatory" />
+			<opc:Method SymbolicName="GenerateReport" TypeDefinition="GenerateValuesMethodType" ModellingRule="Mandatory" />
+		</opc:Children>
+		
+	</opc:ObjectType>
+	<opc:ObjectType SymbolicName="SystemCycleStatusEventType" BaseType="ua:SystemEventType">
+		<opc:Description>An event raised when a system cycle starts.</opc:Description>
+		<opc:Children>
+			<opc:Property SymbolicName="CycleId" DataType="ua:String" ValueRank="Scalar" />
+		</opc:Children>
+	</opc:ObjectType>
+	<opc:ObjectType SymbolicName="WireFinishedEventType" BaseType="ua:SystemEventType">
+		<opc:Children>
+			<opc:Property SymbolicName="JobId" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Property SymbolicName="BatchSequenceNumber" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Property SymbolicName="WireSequenceNumber" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Property SymbolicName="GoodPartCount" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Property SymbolicName="BadPartCount" DataType="ua:UInt32" ValueRank="Scalar" />
+		</opc:Children>
+	</opc:ObjectType>
+	<opc:ObjectType SymbolicName="BatchFinishedEventType" BaseType="ua:SystemEventType">
+		<opc:Children>
+			<opc:Property SymbolicName="BatchSequenceNumber" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Property SymbolicName="JobId" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Property SymbolicName="GoodPartCount" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Property SymbolicName="BadPartCount" DataType="ua:UInt32" ValueRank="Scalar" />
+		</opc:Children>
+	</opc:ObjectType>
+	<opc:ObjectType SymbolicName="JobFinishedEventType" BaseType="ua:SystemEventType">
+		<opc:Children>
+			<opc:Property SymbolicName="JobId" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Property SymbolicName="GoodPartCount" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Property SymbolicName="BadPartCount" DataType="ua:UInt32" ValueRank="Scalar" />
+		</opc:Children>
+	</opc:ObjectType>
+	<opc:ObjectType SymbolicName="JobStoppedEventType" BaseType="ua:SystemEventType">
+		<opc:Children>
+			<opc:Property SymbolicName="JobId" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Property SymbolicName="GoodPartCount" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Property SymbolicName="BadPartCount" DataType="ua:UInt32" ValueRank="Scalar" />
+		</opc:Children>
+	</opc:ObjectType>
+	<opc:ObjectType SymbolicName="ProductionStartedEventType" BaseType="ua:SystemEventType">
+		<opc:Children>
+			<opc:Property SymbolicName="JobId" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Property SymbolicName="GoodPartCount" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Property SymbolicName="BadPartCount" DataType="ua:UInt32" ValueRank="Scalar" />
+		</opc:Children>
+	</opc:ObjectType>
+	<opc:ObjectType SymbolicName="ProductionStoppedEventType" BaseType="ua:SystemEventType">
+		<opc:Children>
+			<opc:Property SymbolicName="JobId" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Property SymbolicName="GoodPartCount" DataType="ua:UInt32" ValueRank="Scalar" />
+			<opc:Property SymbolicName="BadPartCount" DataType="ua:UInt32" ValueRank="Scalar" />
+		</opc:Children>
+	</opc:ObjectType>
+	
+</opc:ModelDesign>
