@@ -12,7 +12,7 @@ namespace Quickstarts.FakraOpc
         private uint m_nextJobId = 0;
         private readonly object m_jobIdLock = new object();
 
-        string connStr = "server=.;uid=sa;pwd=123456;Initial Catalog=Hosver_MES_ProductionInfo;Encrypt=True;TrustServerCertificate=True;";
+        string connStr = "Data Source=127.0.0.1;Initial Catalog=Hosver_MES_ProductionInfo;User Id=sa;Password=qwe123;TrustServerCertificate=True";
 
         public void SetNodeManager(FakraOpcNodeManager nodeManager)
         {
