@@ -359,3 +359,91 @@ Opc.Ua.ModelCompiler.exe compile -version v104 -d2 ".\ModelDesign.xml" -cg ".\Mo
 |---|---|---|
 | OPCFoundation.NetStandard.Opc.Ua | 1.5.378.106 | OPC UA 服务器 SDK |
 | SqlSugarCore | 5.1.4.193 | SQL Server ORM |
+
+---
+
+## 更新日志 v20260324
+
+本次更新全面重构了 OPC UA 方法实现和 REST API 事件触发逻辑，使其完整符合 DiIT CAO 接口规范 v1.3。以下是与旧版本的详细对比。
+
+### 1. AddJob 方法实现（FakraOpcMachineState.cs）
+
+**旧版本：** 仅将作业数据写入 SQL Server 数据库，JobId 由数据库自增主键生成。如果数据库不可用，直接返回 `BadInternalError`，MES 收到错误。未在 OPC UA 地址空间中创建任何节点。
+
+**新版本：** AddJob 现在执行完整的 OPC UA 地址空间操作：
+- 验证输入参数（空值返回 `BadArgumentsMissing`，无效 ArticleId 返回 `BadNoMatch`）
+- 由服务器通过 `AllocateJobId()` 分配唯一 JobId（内存递增计数器）
+- 在 `JobList` 下创建 `JobInfoState` 实例节点，包含所有属性（JobId, JobName, JobQuantity, BatchQuantity, ArticleId, GoodPartCount=0, BadPartCount=0, BatchCount=0, JobState=Initial）
+- 数据库写入降级为非关键操作——失败仅记录日志，不影响 OPC UA 方法返回
+
+### 2. ActivateJob 方法实现（FakraOpcMachineState.cs）
+
+**旧版本：** 空实现，直接返回 `ServiceResult.Good`，未执行任何操作。
+
+**新版本：**
+- 根据 JobId 查找 Job 节点（不存在则返回 `BadNotFound`）
+- 更新 Job 节点：`JobState` → `Active(1)`，设置 `ActivationTime`
+- 更新 Machine 节点：`ActiveJobState` → `Active(1)`
+- **[Code Review 修复]** 更新 `ProductionStatus` → `JobNotRunning(4)`，符合规范 8.1 节状态转换图
+- 内部记录 `m_activeJobId`，供事件触发使用
+
+### 3. DeleteJob 方法实现（FakraOpcMachineState.cs）
+
+**旧版本：** 仅从数据库删除记录，未操作 OPC UA 地址空间。
+
+**新版本：**
+- 从地址空间移除 Job 节点及其所有子节点（属性节点）
+- **[Code Review 修复]** 如果删除的是当前 active job，重置 `m_activeJobId=0`、`ActiveJobState=Initial(0)`、`ProductionStatus=JobNotActivated(3)`
+- 数据库删除降级为非关键操作
+
+### 4. 事件触发 REST API（KomaxController.cs）
+
+**旧版本：** 所有事件的 `JobId` 来自 HTTP 请求体。机器控制器传入的 JobId 与 MES 通过 AddJob 获得的 JobId 是两套独立的 ID 体系。导致 MES 报错 `eventArgs.JobId N != state.TransferLineState.CurrentJobID M => ignored`。
+
+**新版本：** 所有事件端点自动从 `Machine.ActiveJobId` 获取服务器分配的 JobId，确保与 MES 跟踪的 ID 一致：
+
+| 事件 | 旧行为 | 新行为 |
+|---|---|---|
+| 所有事件 | JobId 来自 HTTP 请求体 | JobId 自动来自 ActiveJobId |
+| 无 active job | 不检查，直接触发 | 返回错误 `"No active job"` |
+| WireFinished | 仅触发事件 | 触发事件 + 更新 Job 计数器 |
+| BatchFinished | 仅触发事件 | 触发事件 + 更新 Job 计数器及 BatchCount |
+| JobFinished | 仅触发事件 | 触发事件 + 更新计数器 + `JobState=Finished(2)` |
+| JobStopped | 仅触发事件 | 触发事件 + 更新计数器 + `JobState=Stopped(3)` |
+| ProductionStarted | 仅触发事件 | 触发事件 + `ProductionStatus=InProduction(6)` |
+| ProductionStopped | 仅触发事件 | 触发事件 + 更新计数器 + `ProductionStatus=JobNotRunning(4)` |
+
+新增 `GET /Komax/ActiveJob` 端点，可查询当前活动作业的完整状态。
+
+### 5. 地址空间管理（FakraOpcNodeManager.cs）
+
+**旧版本：** 仅有 `AddArticle` 方法，无 Job 节点管理能力。
+
+**新版本：** 新增以下方法：
+
+| 方法 | 功能 |
+|---|---|
+| `AddJob()` | 在 JobList 下创建 JobInfoState 节点 |
+| `FindJob()` | 按 JobId 查找 Job 节点 |
+| `RemoveJob()` | 移除 Job 节点及其子节点 |
+| `ArticleExists()` | 验证 ArticleId 是否存在 |
+| `Machine` 属性 | 公开 MachineState 供外部访问 |
+
+**[Code Review 修复]** `AddArticle` 改用父构造函数模式（`new ArticleState(articleList)`），与 `AddJob` 保持一致，移除手动双向引用添加，避免潜在的节点重复问题。
+
+### 6. 状态初始化（FakraOpcMachineState.cs）
+
+**旧版本：** Machine 创建后未设置初始状态值。
+
+**新版本：** `OnAfterCreate` 中初始化：
+- `ProductionStatus = MachineNotStarted(2)`
+- `ActiveJobState = Initial(0)`
+
+### 7. Code Review 发现的其他注意事项
+
+| 项目 | 状态 | 说明 |
+|---|---|---|
+| GenerateReport | 占位实现 | 返回 Good 但未生成报告文件（TODO） |
+| JobId 持久性 | 已知限制 | 内存计数器，服务器重启后从 1 开始。如需持久化应从数据库加载最大值 |
+| 连接字符串 | 硬编码 | 建议迁移到 `appsettings.json` 配置文件 |
+| REST API 模型 | 冗余字段 | `EventParam.JobId` 不再被事件端点使用（由服务器自动填充），保留是为了向后兼容 |

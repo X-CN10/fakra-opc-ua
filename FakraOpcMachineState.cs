@@ -117,9 +117,12 @@ namespace Quickstarts.FakraOpc
                 job.ActivationTime.Value = DateTime.UtcNow;
                 job.ClearChangeMasks(context, true);
 
-                // spec: JobStateEnum.Active = 1
                 this.ActiveJobState.Value = 1;
                 this.ActiveJobState.ClearChangeMasks(context, true);
+
+                // spec 8.1: after activation, ProductionStatus → JobNotRunning(4)
+                this.ProductionStatus.Value = 4;
+                this.ProductionStatus.ClearChangeMasks(context, true);
 
                 m_activeJobId = jobId;
 
@@ -147,6 +150,16 @@ namespace Quickstarts.FakraOpc
                 {
                     Console.WriteLine($"[DeleteJob] Failed: Job {jobId} not found");
                     return new ServiceResult(Opc.Ua.StatusCodes.BadNotFound);
+                }
+
+                if (m_activeJobId == jobId)
+                {
+                    m_activeJobId = 0;
+                    this.ActiveJobState.Value = 0; // Initial
+                    this.ActiveJobState.ClearChangeMasks(context, true);
+                    this.ProductionStatus.Value = 3; // JobNotActivated
+                    this.ProductionStatus.ClearChangeMasks(context, true);
+                    Console.WriteLine($"[DeleteJob] Active job deleted, reset to Initial state");
                 }
 
                 Console.WriteLine($"[DeleteJob] Succeeded: JobId={jobId}");
