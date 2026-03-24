@@ -10,7 +10,10 @@ namespace Quickstarts.FakraOpc
     {
         private FakraOpcNodeManager m_nodeManager;
         private uint m_nextJobId = 0;
+        private uint m_activeJobId = 0;
         private readonly object m_jobIdLock = new object();
+
+        public uint ActiveJobId => m_activeJobId;
 
         string connStr = "Data Source=127.0.0.1;Initial Catalog=Hosver_MES_ProductionInfo;User Id=sa;Password=qwe123;TrustServerCertificate=True";
 
@@ -117,6 +120,8 @@ namespace Quickstarts.FakraOpc
                 // spec: JobStateEnum.Active = 1
                 this.ActiveJobState.Value = 1;
                 this.ActiveJobState.ClearChangeMasks(context, true);
+
+                m_activeJobId = jobId;
 
                 Console.WriteLine($"[ActivateJob] Succeeded: JobId={jobId}");
                 return ServiceResult.Good;
